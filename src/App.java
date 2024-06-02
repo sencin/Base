@@ -10,12 +10,13 @@ public class App {
         a.octal_Hexa_conversion(decimal,16);
     }
 }
+
 class conversion{
+
    int zero =0;
    public void binary(int decimal){
     String output = "";
     int binary = 2;
-    
         while(decimal!=zero){
             if(decimal%binary == zero){
                 decimal/=binary;
@@ -29,12 +30,18 @@ class conversion{
     }
     
     public void octal_Hexa_conversion(double decimal,int base){
+
         String hexadecimal ="0123456789ABCDEF";
         List<String> output = new ArrayList<>();
 
         String convertedString ="";
         int value = base;
 
+        if(value !=8 && value!=16 ){
+            System.out.println("return");
+            return;
+        }
+        
         double tolerance = 1e-0;
         while(Math.abs(decimal)>=tolerance){
             if(decimal%value==0){
@@ -58,6 +65,6 @@ class conversion{
                 convertedString+=string;
             }     
         }
-          System.out.printf((base==16)? "HEXADECIMAL: %s %n":"OCTAL: %s %n", new StringBuilder(convertedString).reverse());
+          System.out.printf((base==16) ? "HEXADECIMAL: %s %n":"OCTAL: %s %n", new StringBuilder(convertedString).reverse());
     }
 }
