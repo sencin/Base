@@ -1,19 +1,21 @@
 import java.util.*;
 public class App {
     public static void main(String[] args) throws Exception {
+
         System.out.print("Enter Decimal Number: ");
         Scanner read = new Scanner(System.in);
-        int decimal =Math.abs(Integer.parseInt(read.nextLine()));
-        conversion a = new conversion();
-        a.binary(decimal);
-        a.octal_Hexa_conversion(decimal, 8);
-        a.octal_Hexa_conversion(decimal,16);
+        int decimal = Math.abs(Integer.parseInt(read.nextLine()));
+        conversion instance = new conversion();
+        instance.binary(decimal);
+        instance.octal_Hexa_conversion(decimal, 8);
+        instance.octal_Hexa_conversion(decimal,16);
+        
     }
 }
 
 class conversion{
-
    int zero =0;
+   double tolerance = 1e-0;
    public void binary(int decimal){
     String output = "";
     int binary = 2;
@@ -42,7 +44,6 @@ class conversion{
             return;
         }
         
-        double tolerance = 1e-0;
         while(decimal>=tolerance){
             if(decimal%value==0){
                 decimal/=value;
