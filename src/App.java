@@ -19,7 +19,7 @@ class conversion{
    public void binary(int decimal){
     String output = "";
     int binary = 2;
-        while(decimal!=zero){
+        while(decimal>zero){
             if(decimal%binary == zero){
                 decimal/=binary;
                 output+=0;
