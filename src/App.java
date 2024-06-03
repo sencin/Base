@@ -1,71 +1,68 @@
 import java.util.*;
 public class App {
     public static void main(String[] args) throws Exception {
-
+        try {
         System.out.print("Enter Decimal Number: ");
         Scanner read = new Scanner(System.in);
-        int decimal = Math.abs(Integer.parseInt(read.nextLine()));
+        int decimal = Math.abs(read.nextInt());
         conversion instance = new conversion();
+
+        System.out.println("====RESULTS====");
         instance.binary(decimal);
         instance.octal_Hexa_conversion(decimal, 8);
         instance.octal_Hexa_conversion(decimal,16);
+        System.out.println("===============");
         
+        } catch (Exception e) {
+           System.out.printf("Enter a valid integer number %n%s",e.fillInStackTrace());
+        }
     }
 }
 
 class conversion{
-   int zero =0;
-   double tolerance = 1e-0;
+   
    public void binary(int decimal){
+    int zero =0;
     String output = "";
     int binary = 2;
-        while(decimal>zero){
-            if(decimal%binary == zero){
-                decimal/=binary;
-                output+=0;
-            }else{
-                decimal/=binary;
-                output+= 1;
-            } 
+        while(decimal!=zero){
+            output+= (decimal%binary == zero) ? 0:1;
+            decimal/=binary;
         }
-          System.out.printf("BINARY VALUE: %s %n",new StringBuilder(output).reverse());
+          System.out.printf("BINARY: %s %n",new StringBuilder(output).reverse());
     }
     
     public void octal_Hexa_conversion(double decimal,int base){
-
         String hexadecimal ="0123456789ABCDEF";
         List<String> output = new ArrayList<>();
+        double threshhold = 1;
+        String processedString ="";
+        int octal =8;
+        int hexa =16;
 
-        String convertedString ="";
-        int value = base;
-
-        if(value !=8 && value!=16 ){
+        if(base !=octal && base!=hexa ){
             System.out.println("Base 8 and 16 is Allowed.");
             return;
         }
         
-        while(decimal>=tolerance){
-            if(decimal%value==0){
-                decimal/=value;
-                output.add("0");
-            }else{
-                decimal/=value;
-                double remainder = value *(decimal -  Math.floor(decimal));
-                output.add(String.format("%.0f",Math.floor(remainder)));
-            }
+        while(decimal>threshhold){
+            decimal/=base;
+            String ternary = (decimal%base ==0)? "0":returnremainder(decimal,base);
+            output.add(ternary);    
         }
-    
-        if( base ==16){
-            for(int a =0;a<output.size();a++){
-                int num = Integer.parseInt(output.get(a));
-                convertedString+=hexadecimal.charAt(num);
-             }
+        for(int a =0;a<output.size();a++){
+                if(base==hexa){
+                    int num = Integer.parseInt(output.get(a));
+                    processedString+=hexadecimal.charAt(num);
+                }
+                else{
+                   processedString+= output.get(a);
+                }       
         }
-        else{
-            for (String string : output) {
-                convertedString+=string;
-            }     
-        }
-          System.out.printf((base==16) ? "HEXADECIMAL: %s %n":"OCTAL: %s %n", new StringBuilder(convertedString).reverse());
+        System.out.printf((base==hexa) ? "HEXA: %s %n":"OCTAL: %s %n", new StringBuilder(processedString).reverse());
+    }
+    private String returnremainder(double decimal, int base){
+        double remainder = base *(decimal -  Math.floor(decimal));
+        return String.format("%.0f",Math.floor(remainder));
     }
 }
