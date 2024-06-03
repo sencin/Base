@@ -35,7 +35,7 @@ class conversion{
     public void octal_Hexa_conversion(double decimal,int base){
         String hexadecimal ="0123456789ABCDEF";
         List<String> output = new ArrayList<>();
-        double threshhold = 1;
+        double threshold = 1;
         String processedString ="";
         int octal =8;
         int hexa =16;
@@ -45,7 +45,7 @@ class conversion{
             return;
         }
         
-        while(decimal>threshhold){
+        while(decimal>threshold){
             decimal/=base;
             String ternary = (decimal%base ==0)? "0":returnremainder(decimal,base);
             output.add(ternary);    
