@@ -40,7 +40,7 @@ class conversion{
         int value = base;
 
         if(value !=8 && value!=16 ){
-            System.out.println("return");
+            System.out.println("Base 8 and 16 is Allowed.");
             return;
         }
         
