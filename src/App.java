@@ -25,6 +25,11 @@ class conversion{
     int zero =0;
     String output = "";
     int binary = 2;
+
+    if(decimal ==0){
+        System.out.println("BINARY: 0");
+        return;
+    }
         while(decimal!=zero){
             output+= (decimal%binary == zero) ? 0:1;
             decimal/=binary;
@@ -35,7 +40,6 @@ class conversion{
     public void octal_Hexa_conversion(double decimal,int base){
         String hexadecimal ="0123456789ABCDEF";
         List<String> output = new ArrayList<>();
-        double threshold = 1;
         String processedString ="";
         int octal =8;
         int hexa =16;
@@ -45,10 +49,16 @@ class conversion{
             return;
         }
         
-        while(decimal>threshold){
+        if(decimal == 0){
+            System.out.println((base==hexa) ? "HEXA: 0":"OCTAL: 0");
+            return;
+        }
+
+        while(decimal>0){
             decimal/=base;
-            String ternary = (decimal%base ==0)? "0":returnremainder(decimal,base);
+            String ternary = (decimal%base == 0)? "0":returnremainder(decimal,base);
             output.add(ternary);    
+            decimal = (decimal<1)? 0:decimal;
         }
         for(int a =0;a<output.size();a++){
                 if(base==hexa){
