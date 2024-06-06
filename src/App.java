@@ -78,9 +78,8 @@ class conversion{
             double value = floatingPointContainer*base; 
             decimalContainer.add(String.format("%.0f",Math.floor(value)));
             floatingPointContainer = 0 + value % 1;
-               if(decimalContainer.size()==10){
-                break;
-               }
+               if(decimalContainer.size()==10)
+                break;          
             }
         }
 
