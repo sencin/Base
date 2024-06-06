@@ -78,7 +78,7 @@ class conversion{
             double value = floatingPointContainer*base; 
             decimalContainer.add(String.format("%.0f",Math.floor(value)));
             floatingPointContainer = 0 + value % 1;
-               if(decimalContainer.size()==10)
+               if(decimalContainer.size()==5)
                 break;          
             }
         }
@@ -86,19 +86,20 @@ class conversion{
         for(int a =0;a<integercontainer.size();a++){
             if(base==hexa){
                 int num = Integer.parseInt(integercontainer.get(a));
-                processedInteger+=getHexadecimalvalues(num);     
-                    if(!decimalContainer.isEmpty()){
-                        for(int z =0;z<decimalContainer.size();z++){
-                            int num2 = Integer.parseInt(decimalContainer.get(z));
-                            processedDecimal.append(getHexadecimalvalues(num2));
-                        }                    
-                    }
+                processedInteger+=getHexadecimalvalues(num);          
             }
             else{
                 processedInteger += integercontainer.get(a).toString();
             }       
         }
    
+        if(!decimalContainer.isEmpty()){
+            for(int z =0;z<decimalContainer.size();z++){
+                int num2 = Integer.parseInt(decimalContainer.get(z));
+                processedDecimal.append(getHexadecimalvalues(num2));
+            }                    
+        }
+
        StringBuilder reversedProcessedString = new StringBuilder(processedInteger).reverse();    
        
         if(!decimalContainer.isEmpty()){
