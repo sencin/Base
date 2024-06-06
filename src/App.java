@@ -92,22 +92,14 @@ class conversion{
                 processedInteger += integercontainer.get(a).toString();
             }       
         }
-   
+        StringBuilder reversedProcessedString = new StringBuilder(processedInteger).reverse(); 
+
         if(!decimalContainer.isEmpty()){
             for(int z =0;z<decimalContainer.size();z++){
                 int num2 = Integer.parseInt(decimalContainer.get(z));
                 processedDecimal.append(getHexadecimalvalues(num2));
-            }                    
-        }
-
-       StringBuilder reversedProcessedString = new StringBuilder(processedInteger).reverse();    
-       
-        if(!decimalContainer.isEmpty()){
-            if(base!=hexa)
-            for (String string : decimalContainer)    
-                processedDecimal.append(string);
-          
-            System.out.printf("OUTPUT: %s.%s \n",reversedProcessedString.toString(),processedDecimal.toString());       
+            }   
+            System.out.printf("OUTPUT: %s.%s \n",reversedProcessedString.toString(),processedDecimal.toString());                    
         }
         else{
             System.out.printf("OUTPUT: %s \n", reversedProcessedString);
