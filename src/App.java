@@ -78,7 +78,7 @@ class conversion{
             double value = floatingPointContainer*base; 
             decimalContainer.add(String.format("%.0f",Math.floor(value)));
             floatingPointContainer = 0 + value % 1;
-               if(decimalContainer.size()==7){
+               if(decimalContainer.size()==10){
                 break;
                }
             }
@@ -96,18 +96,18 @@ class conversion{
                     }
             }
             else{
-                processedInteger+= integercontainer.get(a).toString();
+                processedInteger += integercontainer.get(a).toString();
             }       
         }
    
        StringBuilder reversedProcessedString = new StringBuilder(processedInteger).reverse();    
        
         if(!decimalContainer.isEmpty()){
-            for (String string : decimalContainer){
+            if(base!=hexa)
+            for (String string : decimalContainer)    
                 processedDecimal.append(string);
-            } 
-            String decimalformat = processedDecimal.substring(0,processedDecimal.length()/2);
-            System.out.printf("OUTPUT: %s.%s \n",reversedProcessedString.toString(),decimalformat.toString());       
+          
+            System.out.printf("OUTPUT: %s.%s \n",reversedProcessedString.toString(),processedDecimal.toString());       
         }
         else{
             System.out.printf("OUTPUT: %s \n", reversedProcessedString);
