@@ -63,6 +63,8 @@ class conversion{
             floatingPointContainer = decimal - Integer.parseInt(split[0]);
             decimal = Integer.parseInt(split[0]);
         }
+        if(decimal == 0) processedInteger+="0";
+        
         while(decimal>0){
             decimal/=base;
             String ternary = (decimal%base == 0)? "0":returnremainder(decimal,base);
